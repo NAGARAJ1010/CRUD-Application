@@ -19,12 +19,21 @@ function App() {
     getAllUsers();
   }, []);
 
+  //Searching Function
   const searchHandler = (e)=>{
     const searchText = e.target.value.toLowerCase();
     const filteredText = users.filter((user)=>
     user.name.toLowerCase().includes(searchText) || user.city.toLowerCase().includes(searchText)
     );
     setFilterUser(filteredText);
+  }
+
+  //Delete Funciton
+  const deleteHandler = async (id)=>{
+    await axios.delete(`http://localhost:8000/users/${id}`).then((res)=>{
+      setUsers(res.data);
+      setFilterUser(res.data);
+    })
   }
   return (
     <>
@@ -47,10 +56,10 @@ function App() {
           </thead>
           <tbody>
             {filterUser &&
-              filterUser.map((user) => {
+              filterUser.map((user,index) => {
                 return (
                   <tr key={user.id}>
-                    <td>{user.id}</td>
+                    <td>{index + 1}</td>
                     <td>{user.name}</td>
                     <td>{user.age}</td>
                     <td>{user.city}</td>
@@ -58,7 +67,7 @@ function App() {
                       <button className="btn green">Edit</button>
                     </td>
                     <td>
-                      <button className="btn red">Delete</button>
+                      <button className="btn red" onClick={()=>{deleteHandler(user.id)}}>Delete</button>
                     </td>
                   </tr>
                 );

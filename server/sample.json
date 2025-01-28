@@ -1,11 +1,1 @@
-[
-    {"id":1,"name":"Nagaraj","age":23,"city":"Chennai"},
-    {"id":2,"name":"Tilak","age":22,"city":"Hydrabed"},
-    {"id":3,"name":"Rohit","age":33,"city":"Mumbai"},
-    {"id":4,"name":"Pollard","age":34,"city":"Mumbai"},
-    {"id":5,"name":"Raina","age":31,"city":"Chennai"},
-    {"id":6,"name":"Virat","age":33,"city":"Bangalore"},
-    {"id":7,"name":"Cummins","age":29,"city":"Hydrabed"},
-    {"id":8,"name":"Siraj","age":27,"city":"Bangalore"},
-    {"id":9,"name":"Bumrah","age":28,"city":"Mumbai"}
-]
+[{"id":1,"name":"Nagaraj","age":23,"city":"Chennai"},{"id":2,"name":"Rohit","age":33,"city":"Mumbai"},{"id":3,"name":"Tilak","age":22,"city":"Hydrabed"},{"id":5,"name":"Hardik","age":29,"city":"Mumbai"}]
