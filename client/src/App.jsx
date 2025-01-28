@@ -7,7 +7,7 @@ function App() {
         <h1>CRUD Application</h1>        
         <div className="input-search">
           <input type="search" />
-          <button>Add</button>
+          <button className='btn'>Add</button>
         </div>
         <table className='table'>
           <thead>
@@ -26,8 +26,8 @@ function App() {
               <td>Nagaraj</td>
               <td>23</td>
               <td>Chennai</td>
-              <td><button>Edit</button></td>
-              <td><button>Delete</button></td>
+              <td><button className='btn green'>Edit</button></td>
+              <td><button className='btn red'>Delete</button></td>
             </tr>
 
             <tr>
@@ -35,8 +35,8 @@ function App() {
               <td>Nagaraj</td>
               <td>23</td>
               <td>Chennai</td>
-              <td><button>Edit</button></td>
-              <td><button>Delete</button></td>
+              <td><button className='btn green'>Edit</button></td>
+              <td><button className='btn red'>Delete</button></td>
             </tr>
 
             <tr>
@@ -44,8 +44,8 @@ function App() {
               <td>Nagaraj</td>
               <td>23</td>
               <td>Chennai</td>
-              <td><button>Edit</button></td>
-              <td><button>Delete</button></td>
+              <td><button className='btn green'>Edit</button></td>
+              <td><button className='btn red'>Delete</button></td>
             </tr>
           </tbody>
         </table>

@@ -57,5 +57,67 @@ h1{
   font-weight: 500;
   color: #fff;
   cursor: pointer;
+  transition: all 0.3s;
 }
+.input-search button:hover{
+  background-color: #34de7b;
+}
+
+.btn{
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: all 0.5s;
+  color: #fff;
+  font-weight: 500;
+  width: 5em;
+}
+
+.green{
+  background-color: #2ecc71;
+}
+
+.green:hover{
+  background-color: #42a86c;
+}
+
+.red{
+  background-color: #eb4d4b;
+}
+
+.red:hover{
+  background-color: #cf4442;
+}
+
+.table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.table th, .table td{
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.table th{
+  background-color: #f2f2f2;
+}
+
+.table tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+.table tr:hover{
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+
+
+
+
 
