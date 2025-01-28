@@ -4,11 +4,12 @@ import "./App.css";
 
 function App() {
   const [users, setUsers] = useState([]);
-
+  const [filterUser,setFilterUser] = useState([]);
   const getAllUsers = async () => {
     try {
       await axios.get("http://localhost:8000/users").then((res) => {
         setUsers(res.data);
+        setFilterUser(res.data);
       });
     } catch (error) {
       console.log("Error Caught", error.message);
@@ -17,12 +18,20 @@ function App() {
   useEffect(() => {
     getAllUsers();
   }, []);
+
+  const searchHandler = (e)=>{
+    const searchText = e.target.value.toLowerCase();
+    const filteredText = users.filter((user)=>
+    user.name.toLowerCase().includes(searchText) || user.city.toLowerCase().includes(searchText)
+    );
+    setFilterUser(filteredText);
+  }
   return (
     <>
       <div className="container">
         <h1>CRUD Application</h1>
         <div className="input-search">
-          <input type="search" />
+          <input type="search" placeholder="Search here" onChange={searchHandler}/>
           <button className="btn">Add</button>
         </div>
         <table className="table">
@@ -37,8 +46,8 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {users &&
-              users.map((user) => {
+            {filterUser &&
+              filterUser.map((user) => {
                 return (
                   <tr key={user.id}>
                     <td>{user.id}</td>
