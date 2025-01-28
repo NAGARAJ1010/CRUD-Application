@@ -1,33 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className='container'>
+        <h1>CRUD Application</h1>        
+        <div className="input-search">
+          <input type="search" />
+          <button>Add</button>
+        </div>
+        <table className='table'>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>City</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Nagaraj</td>
+              <td>23</td>
+              <td>Chennai</td>
+              <td><button>Edit</button></td>
+              <td><button>Delete</button></td>
+            </tr>
+
+            <tr>
+              <td>2</td>
+              <td>Nagaraj</td>
+              <td>23</td>
+              <td>Chennai</td>
+              <td><button>Edit</button></td>
+              <td><button>Delete</button></td>
+            </tr>
+
+            <tr>
+              <td>3</td>
+              <td>Nagaraj</td>
+              <td>23</td>
+              <td>Chennai</td>
+              <td><button>Edit</button></td>
+              <td><button>Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
