@@ -5,6 +5,8 @@ import "./App.css";
 function App() {
   const [users, setUsers] = useState([]);
   const [filterUser,setFilterUser] = useState([]);
+  const[isModelOpen,setIsModelOpen] = useState(false);
+  const[record,setRecord] = useState({name:"", age:"", city:""});
   const getAllUsers = async () => {
     try {
       await axios.get("http://localhost:8000/users").then((res) => {
@@ -35,13 +37,30 @@ function App() {
       setFilterUser(res.data);
     })
   }
+
+  //Adding function
+  const addUserHandler = ()=>{
+    setRecord({name:"",age:"",city:""});
+    setIsModelOpen(true);
+  }
+
+  const dataHandler = (e)=>{
+    setRecord({...record,[e.target.name] : e.target.value})
+  }
+
+  const submitHandler = async (e)=>{
+    e.preventDefault();
+    await axios.post("http://localhost:8000/users",record).then((res)=>{
+      console.log(res);
+    })
+  };
   return (
     <>
       <div className="container">
         <h1>CRUD Application</h1>
         <div className="input-search">
           <input type="search" placeholder="Search here" onChange={searchHandler}/>
-          <button className="btn">Add</button>
+          <button className="btn" onClick={addUserHandler}>Add</button>
         </div>
         <table className="table">
           <thead>
@@ -74,6 +93,29 @@ function App() {
               })}
           </tbody>
         </table>
+        {isModelOpen && (
+          <div className="model">
+            <div className="model-content">
+              <span className="close" onClick={()=>{setIsModelOpen(false)}}>&times;</span>
+              <h2>Add User</h2>
+              <div className="input-field">
+              <label htmlFor="name">Full Name</label>
+              <input type="text" value={record.name} name="name" id="name" onChange={dataHandler}/>
+              </div>
+
+              <div className="input-field">
+              <label htmlFor="age">Age</label>
+              <input type="number" value={record.age} name="age" id="age" onChange={dataHandler}/>
+              </div>
+
+              <div className="input-field">
+              <label htmlFor="city">City</label>
+              <input type="text" value={record.city} name="city" id="city" onChange={dataHandler}/>
+              </div>
+              <button className="btn green" onClick={submitHandler}>Add User</button>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
