@@ -133,11 +133,12 @@ function App() {
                 className="close"
                 onClick={() => {
                   setIsModelOpen(false);
+                  getAllUsers();
                 }}
               >
                 &times;
               </span>
-              <h2>Add User</h2>
+              <h2>{record.id ? "Update User" : "Add User"}</h2>
               <div className="input-field">
                 <label htmlFor="name">Full Name</label>
                 <input
@@ -171,7 +172,7 @@ function App() {
                 />
               </div>
               <button className="btn green" onClick={submitHandler}>
-                Add User
+                {record.id ? "Update User" : "Add User"}
               </button>
             </div>
           </div>

@@ -43,6 +43,22 @@ app.post("/users",(req,res)=>{
     return res.json({message:"User details added successfully..."});
   });
 })
+
+//Update user details
+app.patch("/users/:id",(req,res)=>{
+  let id = Number(req.params.id);
+  let {name,age,city} = req.body;
+  if(!name || !age || !city){
+    res.status(400).send({message:"Fill all fields"});
+  }
+  let index = users.findIndex((user)=>user.id == id);
+  users.splice(index,1,{...req.body});
+
+  fs.writeFile("./sample.json", JSON.stringify(users), (err) => {
+    return res.json({message:"User details updated successfully..."});
+  });
+})
+
 app.listen(port, (err) => {
   console.log(`App is running in port ${port}`);
 });
