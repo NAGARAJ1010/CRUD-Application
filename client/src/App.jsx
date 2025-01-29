@@ -51,7 +51,8 @@ function App() {
   const submitHandler = async (e)=>{
     e.preventDefault();
     await axios.post("http://localhost:8000/users",record).then((res)=>{
-      console.log(res);
+    getAllUsers();
+    setIsModelOpen(false);
     })
   };
   return (

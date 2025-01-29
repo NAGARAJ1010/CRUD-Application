@@ -1,6 +1,7 @@
 const express = require("express");
 const users = require("./sample.json");
 const app = express();
+app.use(express.json());
 const fs = require("fs");
 const cors = require("cors");
 const port = 8000;
@@ -28,6 +29,20 @@ app.delete("/users/:id", (req, res) => {
   });
 });
 
+
+//Add user details
+app.post("/users",(req,res)=>{
+  let {name,age,city} = req.body;
+  if(!name || !age || !city){
+    res.status(400).send({message:"Fill all fields"});
+  }
+  let id = Date.now();
+  users.push({id,name,age,city});
+
+  fs.writeFile("./sample.json", JSON.stringify(users), (err) => {
+    return res.json({message:"User details added successfully..."});
+  });
+})
 app.listen(port, (err) => {
   console.log(`App is running in port ${port}`);
 });
